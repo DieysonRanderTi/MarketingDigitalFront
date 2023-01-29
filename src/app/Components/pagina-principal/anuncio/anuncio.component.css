@@ -1,0 +1,39 @@
+.preco{
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: green;
+  border-radius: 10px;
+  text-align: center;
+  width: auto;
+}
+
+.descricao{
+  font-size: 15px;
+  font-weight: bold;
+  word-wrap:break-word;
+  text-align: center;
+}
+
+.cardAnuncio{
+  width: 200px;
+  height: 300px;
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  transition: all 0.5s;
+  cursor: pointer;
+  box-shadow: 10px 5px 5px rgb(171, 168, 168);
+}
+
+.cardAnuncio:hover{
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+
+
+
+
+

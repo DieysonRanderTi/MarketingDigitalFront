@@ -1,0 +1,46 @@
+import { Observable } from 'rxjs';
+import { environment } from './../../environments/environment';
+import { HttpClient } from '@angular/common/http'
+import { Injectable } from '@angular/core';
+import { inject } from '@angular/core/testing';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AnuncioService{
+
+  constructor(
+    private http: HttpClient
+  ){}
+
+  BuscarTodosAnunciosIncludeEmpresa(): Observable<any>{
+    return this.http.get<any[]>(`${environment.apiUrl}/anuncio/buscaranuncioincludeempresa`)
+  }
+  BuscarAnunciosPorDescricao(descricao: string): Observable<any>{
+    return this.http.get<any[]>(`${environment.apiUrl}/buscaranunciospordescricao`+descricao)
+  }
+
+  BuscarAnuncioPorId(id: string): Observable<any>{
+    return this.http.get<any[]>(`${environment.apiUrl}/buscaranuncioporid`+id)
+  }
+
+  BuscarTodosAnuncios(): Observable<any>{
+    return this.http.get<any[]>(`${environment.apiUrl}/anuncio`)
+  }
+  SalvarAnuncio(obj: any){
+    debugger;
+    return this.http.post(`${environment.apiUrl}/anuncio`, obj)
+  }
+  AtualizarAnuncio(obj: any): Observable<any>{
+    return this.http.put(`${environment.apiUrl}/anuncio`, obj)
+  }
+  DeletarAnuncio(obj: any): Observable<any>{
+    return this.http.delete(`${environment.apiUrl}/anuncio`, obj)
+  }
+
+  EnviarArquivo(arquivoSelecionado: File) : Observable<string> {
+    const formData: FormData = new FormData();
+    formData.append("arquivoEnviado", arquivoSelecionado, arquivoSelecionado.name);
+    return this.http.post<string>(`${environment.apiUrl}/anuncio/enviarArquivo`, formData);
+  }
+}

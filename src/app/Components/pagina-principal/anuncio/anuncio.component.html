@@ -1,0 +1,30 @@
+
+  <section  class="padding-bottom-sm">
+    <header class="section-heading heading-line">
+        <h4 class="title-section text-uppercase">Destaques do Dia</h4>
+    </header>
+    <div class="row col-xl-12 col-lg-3 col-md-4 col-6">
+        <div *ngFor="let anuncio of anuncios">
+          <!-- <a [routerLink]="['/detalhes-anuncio', anuncio.id]"> -->
+            <a (click)="abrirModalAnuncio(anuncio)">
+            <div class="col-xl-12 col-lg-3 col-md-4 col-6">
+                <div class="card cardAnuncio" *ngIf="anuncios.length > 0">
+                    <img class="img-wrap" src="https://localhost:5001/arquivos/{{anuncio.imagem_url}}" />
+                    <figcaption class="info-wrap">
+                        <p class="descricao">{{anuncio.descricao}}</p>
+                        <p>Válido até: {{anuncio.data_validade | date:'dd/MM/yy'}}</p>
+                        <p>{{anuncio.empresa.nome_fantasia}}</p>
+                        <div class="preco"><i class="bi bi-cash-coin"></i>{{anuncio.preco | currency: 'BRL'}}</div>
+                    </figcaption>
+                </div>
+                <div *ngIf="anuncios.length == 0">
+                  <p>Nenhum anúncio para mostrar.</p>
+                </div>
+            </div>
+          </a>
+        </div>
+    </div>
+  </section>
+
+
+  <!-- =============== SECTION ITEMS .//END =============== -->

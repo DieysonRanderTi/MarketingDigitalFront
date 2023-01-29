@@ -1,0 +1,18 @@
+.menu {
+  position: fixed;
+  width: auto;
+}
+
+.logo{
+  font-size: larger;
+  background-color: white;
+  color: blue;
+  margin-right: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  border-radius: 15px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}

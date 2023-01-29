@@ -1,0 +1,74 @@
+<div
+  class="container"
+  style="
+    border: 1px solid;
+    padding: 15px;
+    margin: 30px;
+    background-color: rgb(210, 229, 230);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  "
+>
+  <div>
+    <h4>Cadastro de Anúncios</h4>
+  </div>
+  <div class="container">
+    <form (ngSubmit)="salvarAnuncio()" [formGroup]="form">
+      <div class="form-group col-md-6">
+        <label for="descricao">Descrição</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="descricao"
+          id="descricao"
+          placeholder="Digite a descrição do seu anúncio"
+        />
+      </div>
+      <div class="form-group col-md-4">
+        <label>Válido até</label>
+        <input type="date" class="form-control" formControlName="data_validade" />
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputState">Categoria</label>
+        <select id="categoriaId" class="form-control">
+          <option selected>Selecione...</option>
+          <option *ngFor="let categoria of categorias" value="{{ categoria.id }}">
+            {{ categoria.descricao }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="preco">Preço</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="preco"
+          id="preco"
+          placeholder="Ex: R$23,99"
+        />
+      </div>
+      <div class="form-group col-md-4" style="margin-left: 10px;">
+        <label class="imageLabel custom-file-label">Imagem/Foto</label>
+        <input
+          type="file"
+          (change)="inputChange($event)"
+          class="custom-file-input"
+          formControlName="imagem"
+          id="customFile"
+        />
+        <img
+          class="col-md-4"
+          [src]="localUrl"
+          *ngIf="localUrl"
+          class="imgPlaceholder"
+          style="width: 250px; height: 200px"
+        />
+      </div>
+      <div style="margin: 10px">
+        <button class="btn btn-dark" style="margin-right: 15px" routerLink="">
+          Voltar
+        </button>
+        <button type="submit" class="btn btn-success">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>

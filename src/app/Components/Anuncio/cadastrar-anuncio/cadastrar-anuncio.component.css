@@ -1,0 +1,16 @@
+.custom-file-label::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  display: block;
+  height: calc(1.5em + 0.9rem);
+  padding: 0.45rem 0.85rem;
+  line-height: 1.5;
+  color: #495057;
+  content: "Selecionar";
+  background-color: #e4e4e4;
+  border-left: inherit;
+  border-radius: 0 0.37rem 0.37rem 0;
+}
