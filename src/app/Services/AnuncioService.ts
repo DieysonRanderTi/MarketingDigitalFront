@@ -17,11 +17,15 @@ export class AnuncioService{
     return this.http.get<any[]>(`${environment.apiUrl}/anuncio/buscaranuncioincludeempresa`)
   }
   BuscarAnunciosPorDescricao(descricao: string): Observable<any>{
-    return this.http.get<any[]>(`${environment.apiUrl}/buscaranunciospordescricao`+descricao)
+    return this.http.get<any[]>(`${environment.apiUrl}/anuncio/buscaranunciospordescricao`+descricao)
   }
 
   BuscarAnuncioPorId(id: string): Observable<any>{
-    return this.http.get<any[]>(`${environment.apiUrl}/buscaranuncioporid`+id)
+    return this.http.get<any[]>(`${environment.apiUrl}/anuncio/buscaranuncioporid/`+id)
+  }
+
+  BuscarAnuncioPorIdIncludeEmpresa(id: string): Observable<any>{
+    return this.http.get<any[]>(`${environment.apiUrl}/anuncio/buscaranuncioporidincludeempresa/`+id)
   }
 
   BuscarTodosAnuncios(): Observable<any>{

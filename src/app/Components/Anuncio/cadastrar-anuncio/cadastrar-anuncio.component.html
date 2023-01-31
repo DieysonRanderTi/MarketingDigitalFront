@@ -4,12 +4,12 @@
     border: 1px solid;
     padding: 15px;
     margin: 30px;
-    background-color: rgb(210, 229, 230);
+    background-color: ghostwhite;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
   "
 >
   <div>
-    <h4>Cadastro de Anúncios</h4>
+    <h4>Cadastro de Anúncio</h4>
   </div>
   <div class="container">
     <form (ngSubmit)="salvarAnuncio()" [formGroup]="form">
@@ -47,7 +47,7 @@
         />
       </div>
       <div class="form-group col-md-4" style="margin-left: 10px;">
-        <label class="imageLabel custom-file-label">Imagem/Foto</label>
+        <label class="imageLabel custom-file-label">Imagem do Produto</label>
         <input
           type="file"
           (change)="inputChange($event)"

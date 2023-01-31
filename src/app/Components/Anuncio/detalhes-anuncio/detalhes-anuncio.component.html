@@ -1,24 +1,27 @@
 <div class="container">
   <div class="modal-header">
-    <button type="button" class="close" aria-label="Fechar">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <h4 class="modal-title" id="modalLabel">Detalhes do Anúncio</h4>
+    <h4>{{anuncio.descricao}}</h4>
   </div>
-  <div class="modal-body text-center">
-    <div>
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-xl-4 col-lg-2 col-md-2 col-sm-2"></div>
+      <div class="col-xl-4 col-lg-2 col-md-2 col-sm-2">
+        <img width="300px" height="250px" src="https://localhost:5001/arquivos/{{anuncio.imagem_url}}" />
+        <p class="avisoImagem text-center">imagem meramente ilustrativa</p>
+        <p class=" preco">{{anuncio.preco | currency: 'BRL'}}</p>
+        <div class="row">
+          <span class="col-lg-6 col-md-6 col-sm-12"><i class="fa fa-calendar"></i> Válido até:{{anuncio.data_validade | date:'dd/MM/yy'}}</span>
+          <span class="col-lg-6 col-md-6 col-sm-12">(ou em quanto durarem os estoques.)</span>
+          <span class="col-lg-6 col-md-6 col-sm-12"><i class="fa fa-shopping-cart"></i> {{anuncio.empresa.nome_fantasia}}</span>
+          <span class="col-lg-6 col-md-6 col-sm-12"><i class="fa fa-map"></i> {{anuncio.empresa.rua}} nº{{anuncio.empresa.numero}}, {{anuncio.empresa.cidade}}-{{anuncio.empresa.uf}}</span>
+          <span class="col-lg-6 col-md-6 col-sm-12" *ngIf="anuncio.empresa.telefone != null"><i class="fa fa-phone"></i> {{anuncio.empresa.telefone}}</span>
+          <span class="col-lg-6 col-md-6 col-sm-12" *ngIf="anuncio.empresa.ponto_referencia != null">Referência: {{anuncio.empresa.ponto_referencia}}</span>
+        </div>
+      </div>
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark">Fechar
-
-    </button>
+    <button type="button" class="btn btn-outline-dark" routerLink="">Voltar</button>
   </div>
 </div>
 

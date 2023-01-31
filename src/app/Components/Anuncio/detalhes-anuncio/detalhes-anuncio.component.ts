@@ -2,7 +2,6 @@ import { Anuncio } from './../../../Models/Anuncio';
 import { AnuncioService } from 'src/app/Services/AnuncioService';
 import { ActivatedRoute } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
 
 @Component({
   selector: 'app-detalhes-anuncio',
@@ -14,8 +13,7 @@ export class DetalhesAnuncioComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-     private anuncioService: AnuncioService,
-     private activeModal: NgbActiveModal) { }
+     private anuncioService: AnuncioService) { }
 
   idAnuncio: string = "";
 
@@ -29,10 +27,11 @@ export class DetalhesAnuncioComponent implements OnInit {
 
   BuscarAnuncioPorId() {
     debugger;
-    this.anuncioService.BuscarAnuncioPorId(this.idAnuncio)
+    this.anuncioService.BuscarAnuncioPorIdIncludeEmpresa(this.idAnuncio)
       .subscribe((result) => {
+        debugger;
         if (result != null) {
-          this.anuncio = result;
+          this.anuncio = result.result;
         }
         else{
           alert(

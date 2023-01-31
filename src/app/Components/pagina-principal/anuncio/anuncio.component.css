@@ -1,18 +1,23 @@
 .preco{
   color: white;
-  font-size: 15px;
-  font-weight: bold;
-  background-color: green;
+  font-size: 20px;
+  font-weight: 900;
+  background-color: #00b517;
   border-radius: 10px;
   text-align: center;
   width: auto;
+  padding: 5px;
+  margin-top: 10px;
 }
 
 .descricao{
+  font-family: SignikaRegular,sans-serif;
+  color: #777676;
   font-size: 15px;
   font-weight: bold;
   word-wrap:break-word;
   text-align: center;
+  margin-bottom: 5px;
 }
 
 .cardAnuncio{
@@ -24,13 +29,36 @@
   margin-bottom: 10px;
   transition: all 0.5s;
   cursor: pointer;
-  box-shadow: 10px 5px 5px rgb(171, 168, 168);
+  border: none;
+  box-shadow: 10px 5px 5px rgb(168, 168, 171);
 }
 
 .cardAnuncio:hover{
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+
+.textPromocaoTitle{
+  background-color: darkblue;
+  color: white;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.textApenas{
+  font-size: 10px;
+  text-align: initial;
+}
+
+.informacoes{
+  margin: 0;
+}
+
+a{
+  color: #959595;
+}
+
+
 
 
 

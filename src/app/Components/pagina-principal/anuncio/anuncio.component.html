@@ -1,23 +1,28 @@
 
   <section  class="padding-bottom-sm">
-    <header class="section-heading heading-line">
-        <h4 class="title-section text-uppercase">Destaques do Dia</h4>
+    <header>
+        <h5 class="text-uppercase textPromocaoTitle">
+          Os melhores Preços estão aqui, confira!
+        </h5>
     </header>
-    <div class="row col-xl-12 col-lg-3 col-md-4 col-6">
+    <div class="row col-xl-12 col-lg-4 col-md-3 col-sm-2">
         <div *ngFor="let anuncio of anuncios">
-          <!-- <a [routerLink]="['/detalhes-anuncio', anuncio.id]"> -->
-            <a (click)="abrirModalAnuncio(anuncio)">
-            <div class="col-xl-12 col-lg-3 col-md-4 col-6">
-                <div class="card cardAnuncio" *ngIf="anuncios.length > 0">
+          <a [routerLink]="['/detalhes-anuncio', anuncio.id]" title="{{anuncio.descricao}}">
+            <!-- <a (click)="abrirModalAnuncio(anuncio)"> -->
+            <div class="col-xl-12 col-lg-4 col-md-3 col-sm-2">
+                <div class="card cardAnuncio" *ngIf="anuncios != null">
                     <img class="img-wrap" src="https://localhost:5001/arquivos/{{anuncio.imagem_url}}" />
-                    <figcaption class="info-wrap">
+                      <figcaption class="info-wrap">
                         <p class="descricao">{{anuncio.descricao}}</p>
-                        <p>Válido até: {{anuncio.data_validade | date:'dd/MM/yy'}}</p>
-                        <p>{{anuncio.empresa.nome_fantasia}}</p>
-                        <div class="preco"><i class="bi bi-cash-coin"></i>{{anuncio.preco | currency: 'BRL'}}</div>
-                    </figcaption>
+                        <p class="informacoes"><i class="fa fa-calendar"></i> {{ anuncio.data_validade | date:'dd/MM/yy'}}</p>
+                        <p class="informacoes"><i class="fa fa-shopping-cart"></i> {{anuncio.empresa.nome_fantasia}}</p>
+                        <p class="preco">
+                          <!-- <span class="textApenas center-block text-center visible-xs">Apenas:</span> -->
+                          {{anuncio.preco | currency: 'BRL'}}
+                        </p>
+                      </figcaption>
                 </div>
-                <div *ngIf="anuncios.length == 0">
+                <div *ngIf="anuncios == null">
                   <p>Nenhum anúncio para mostrar.</p>
                 </div>
             </div>

@@ -1,0 +1,13 @@
+.preco{
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: green;
+  border-radius: 10px;
+  text-align: center;
+  padding: 5px;
+}
+.avisoImagem{
+  font-size: 10px;
+}
+

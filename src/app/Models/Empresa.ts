@@ -16,7 +16,7 @@ export class Empresa{
     public numero: string,
     public bairro: string,
     public cidade: string,
-    public uF: string,
+    public uf: string,
     public cep: string,
     public ponto_referencia: string
   ){}

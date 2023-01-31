@@ -11,7 +11,6 @@ import { AnuncioService } from 'src/app/Services/AnuncioService';
 })
 export class AnuncioComponent implements OnInit {
   public anuncios: Anuncio[] = [];
-  public imageSrc: string = "../../../../../../../MaketingDigitalApi/MarketingAPI.Presentation/Images/";
 
   constructor(
     private anuncioservice: AnuncioService,
