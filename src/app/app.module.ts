@@ -16,6 +16,8 @@ import { CadastrarAnuncioComponent } from './Components/Anuncio/cadastrar-anunci
 import { PaginaPrincipalComponent } from './Components/pagina-principal/pagina-principal.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { DetalhesAnuncioComponent } from './Components/Anuncio/detalhes-anuncio/detalhes-anuncio.component';
+import { GerencialEmpresaComponent } from './Components/empresa/gerencial-empresa/gerencial-empresa.component';
+import { CadastroEmpresaComponent } from './Components/empresa/cadastro-empresa/cadastro-empresa.component';
 
 
 
@@ -29,7 +31,9 @@ import { DetalhesAnuncioComponent } from './Components/Anuncio/detalhes-anuncio/
     CadastrarAnuncioComponent,
     PaginaPrincipalComponent,
     FooterComponent,
-    DetalhesAnuncioComponent
+    DetalhesAnuncioComponent,
+    GerencialEmpresaComponent,
+    CadastroEmpresaComponent
   ],
   imports: [
     BrowserModule,
