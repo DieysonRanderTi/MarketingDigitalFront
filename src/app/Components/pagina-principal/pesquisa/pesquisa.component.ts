@@ -7,12 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PesquisaComponent implements OnInit {
 
+  palavraPesquisa: string = "";
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  buscarAnunciosPorDescricao(descricao: string){
+  buscarAnunciosPorDescricao(){
+    this.palavraPesquisa
     debugger;
+
   }
 }

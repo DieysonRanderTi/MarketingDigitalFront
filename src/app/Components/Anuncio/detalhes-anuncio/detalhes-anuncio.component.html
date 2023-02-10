@@ -10,13 +10,16 @@
         <p class="avisoImagem text-center">imagem meramente ilustrativa</p>
         <p class=" preco">{{anuncio.preco | currency: 'BRL'}}</p>
         <div class="row">
-          <span class="col-lg-6 col-md-6 col-sm-12"><i class="fa fa-calendar"></i> Válido até:{{anuncio.data_validade | date:'dd/MM/yy'}}</span>
-          <span class="col-lg-6 col-md-6 col-sm-12">(ou em quanto durarem os estoques.)</span>
-          <span class="col-lg-6 col-md-6 col-sm-12"><i class="fa fa-shopping-cart"></i> {{anuncio.empresa.nome_fantasia}}</span>
-          <span class="col-lg-6 col-md-6 col-sm-12"><i class="fa fa-map"></i> {{anuncio.empresa.rua}} nº{{anuncio.empresa.numero}}, {{anuncio.empresa.cidade}}-{{anuncio.empresa.uf}}</span>
-          <span class="col-lg-6 col-md-6 col-sm-12" *ngIf="anuncio.empresa.telefone != null"><i class="fa fa-phone"></i> {{anuncio.empresa.telefone}}</span>
-          <span class="col-lg-6 col-md-6 col-sm-12" *ngIf="anuncio.empresa.ponto_referencia != null">Referência: {{anuncio.empresa.ponto_referencia}}</span>
+          <span class="col-lg-12 col-md-12 col-sm-12"><i class="fa fa-calendar"></i> Promoção válida até:{{anuncio.data_validade | date:'dd/MM/yy'}}</span>
         </div>
+          <span class="col-lg-6 col-md-6 col-sm-12">(ou em quanto durarem os estoques.)</span>
+          <div class="row">
+            <span class="col-lg-6 col-md-6 col-sm-12"><i class="fa fa-shopping-cart"></i> {{anuncio.empresa.nome_fantasia}}</span>
+            <span class="col-lg-6 col-md-6 col-sm-12"><i class="fa fa-map"></i> {{anuncio.empresa.rua}} nº{{anuncio.empresa.numero}}, {{anuncio.empresa.cidade}}-{{anuncio.empresa.uf}}</span>
+            <span class="col-lg-6 col-md-6 col-sm-12" *ngIf="anuncio.empresa.telefone != null"><i class="fa fa-phone"></i> {{anuncio.empresa.telefone}}</span>
+            <!-- <span class="col-lg-6 col-md-6 col-sm-12" *ngIf="anuncio.empresa.ponto_referencia != null">Referência: {{anuncio.empresa.ponto_referencia}}</span> -->
+          </div>
+
         <p class="aviso"><strong>Atenção:</strong> Os anúncios promocionais publicados em nosso site são de confecção e responsabilidade exclusivas das empresas anunciantes.</p>
       </div>
     </div>

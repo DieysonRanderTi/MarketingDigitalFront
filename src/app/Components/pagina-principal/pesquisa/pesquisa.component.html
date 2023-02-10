@@ -12,9 +12,9 @@
                 <div class="col-xl-6 col-lg-5 col-md-6">
                     <form class="search-header">
                         <div class="input-group w-100">
-                            <input type="text" class="form-control" placeholder="O que você precisa?">
+                            <input type="text" class="form-control" placeholder="O que você precisa?" [(ngModel)]="palavraPesquisa">
                             <div class="input-group-append">
-                              <button class="btn btn-success" type="submit">
+                              <button class="btn btn-success" type="submit" (click)="buscarAnunciosPorDescricao()">
                                 <i class="fa fa-search"></i> Buscar
                               </button>
                             </div>
@@ -42,7 +42,7 @@
                             </a>
                         </div> -->
                         <div class="widget-header mr-3">
-                            <a [routerLink]="['/cadastrar-anuncio']" class="widget-view">
+                            <a [routerLink]="['/gerencial-empresa']" class="widget-view">
                                 <div class="icon-area" style="color: white;">
                                     <i class="fa fa-store"></i>
                                 </div>

@@ -18,6 +18,7 @@ export class Empresa{
     public cidade: string,
     public uf: string,
     public cep: string,
+    public quantidade_anuncios: number,
     public ponto_referencia: string
   ){}
 }

@@ -3,6 +3,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import {LOCALE_ID, DEFAULT_CURRENCY_CODE} from '@angular/core';
+import localePt from '@angular/common/locales/pt';
+import {registerLocaleData} from '@angular/common';
+
 import { AnuncioService } from './Services/AnuncioService';
 import { EmpresaService } from './Services/EmpresaService';
 import { CategoriaService } from './Services/CategoriaService';
@@ -16,11 +20,11 @@ import { CadastrarAnuncioComponent } from './Components/Anuncio/cadastrar-anunci
 import { PaginaPrincipalComponent } from './Components/pagina-principal/pagina-principal.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { DetalhesAnuncioComponent } from './Components/Anuncio/detalhes-anuncio/detalhes-anuncio.component';
-import { GerencialEmpresaComponent } from './Components/empresa/gerencial-empresa/gerencial-empresa.component';
-import { CadastroEmpresaComponent } from './Components/empresa/cadastro-empresa/cadastro-empresa.component';
+import { GerencialEmpresaComponent } from './Components/Empresa/gerencial-empresa/gerencial-empresa.component';
+import { CadastroEmpresaComponent } from './Components/Empresa/cadastro-empresa/cadastro-empresa.component';
 
 
-
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [
@@ -33,6 +37,8 @@ import { CadastroEmpresaComponent } from './Components/empresa/cadastro-empresa/
     FooterComponent,
     DetalhesAnuncioComponent,
     GerencialEmpresaComponent,
+    CadastroEmpresaComponent,
+    GerencialEmpresaComponent,
     CadastroEmpresaComponent
   ],
   imports: [
@@ -43,6 +49,10 @@ import { CadastroEmpresaComponent } from './Components/empresa/cadastro-empresa/
     ReactiveFormsModule
   ],
   providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt'
+    },
     AnuncioService,
     EmpresaService,
     CategoriaService,

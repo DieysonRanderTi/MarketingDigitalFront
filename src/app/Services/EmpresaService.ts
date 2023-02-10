@@ -15,4 +15,8 @@ constructor(
   BuscarTodasEmpresas(): Observable<any>{
     return this.http.get<any[]>(`${environment.apiUrl}/anuncio`)
   }
+
+  BuscarEmpresaESeusAnuncios(id: string): Observable<any>{
+    return this.http.get<any[]>(`${environment.apiUrl}/empresa/buscarempresaeseusanuncios/`+id)
+  }
 }
