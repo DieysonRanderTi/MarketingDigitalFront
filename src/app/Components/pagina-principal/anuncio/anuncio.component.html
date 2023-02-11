@@ -8,7 +8,6 @@
     <div class="row col-xl-12 col-lg-4 col-md-3 col-sm-2">
         <div *ngFor="let anuncio of anuncios">
           <a [routerLink]="['/detalhes-anuncio', anuncio.id]" title="Clique e saiba mais">
-            <!-- <a (click)="abrirModalAnuncio(anuncio)"> -->
             <div class="col-xl-12 col-lg-4 col-md-3 col-sm-2">
                 <div class="card cardAnuncio" *ngIf="anuncios != null">
                     <img class="img-wrap" src="https://localhost:5001/resources/images/{{anuncio.imagem_url}}" />
@@ -17,7 +16,6 @@
                         <p class="informacoes text-center"> Promoção até {{ anuncio.data_validade | date:'dd/MM/yy'}}</p>
                         <p class="informacoes text-center"><i class="fa fa-shopping-cart"></i> {{anuncio.empresa.nome_fantasia}}</p>
                         <p class="preco">
-                          <!-- <span class="textApenas center-block text-center visible-xs">Apenas:</span> -->
                           {{anuncio.preco | currency: 'BRL'}}
                         </p>
                       </figcaption>

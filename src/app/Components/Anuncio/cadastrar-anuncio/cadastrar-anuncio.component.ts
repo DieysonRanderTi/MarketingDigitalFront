@@ -74,14 +74,13 @@ export class CadastrarAnuncioComponent implements OnInit {
       empresa_id: this.empresaId,
       imagem_url: this.nomeArquivo,
     };
-    console.log(anuncio);
+
     this.anuncioservice.SalvarAnuncio(anuncio).subscribe(
-      (result) => {
-        debugger;
-        if (result != null) alert('Anúncio cadastrado com sucesso!');
+      () => {
+        alert('Anúncio cadastrado com sucesso!');
       },
       (erro) => {
-        alert('Erro ao cadastrar o anúncio.' + erro);
+        alert('Erro ao cadastrar o anúncio.');
       }
     );
   }
@@ -93,17 +92,17 @@ export class CadastrarAnuncioComponent implements OnInit {
           this.categorias = result;
         }
       },
-      (erro) => {
+      () => {
         alert(
-          `${erro.errror} Nenhuma categoria encontrada. Verifique a conexão com a internet.)`
+          `Nenhuma categoria encontrada. Verifique a conexão com a internet.`
         );
       }
     );
   }
 
   onFileChange(ev :any) : void{
-    const reader = new FileReader();
 
+    const reader = new FileReader();
     reader.onload = (event : any) => this.imagemUrl = event.target.result;
     this.file = ev.target.files;
     reader.readAsDataURL(this.file[0]);
@@ -113,8 +112,8 @@ export class CadastrarAnuncioComponent implements OnInit {
   uploadImagem(): void{
     this.anuncioservice.postUpload(this.file)
     .subscribe(
-      (file) => {
-        this.nomeArquivo = file;
+      (fileName) => {
+        this.nomeArquivo = fileName;
       },
       (error: any) => {
         alert('Erro ao enviar imagem para o servidor.');
