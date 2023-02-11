@@ -20,6 +20,7 @@ export class CadastrarAnuncioComponent implements OnInit {
   localUrl: any;
   file?: File;
   nomeArquivo: string = '';
+  imagemUrl = "../../../../assets/images/icons/upload.png";
   public arquivoSelecionado: File | null | undefined;
 
   constructor(
@@ -100,6 +101,27 @@ export class CadastrarAnuncioComponent implements OnInit {
     );
   }
 
+  onFileChange(ev :any) : void{
+    const reader = new FileReader();
+
+    reader.onload = (event : any) => this.imagemUrl = event.target.result;
+    this.file = ev.target.files;
+    reader.readAsDataURL(this.file[0]);
+    this.uploadImagem();
+  }
+
+  uploadImagem(): void{
+    this.anuncioservice.postUpload(this.file)
+    .subscribe(
+      (file) => {
+        this.nomeArquivo = file;
+      },
+      (error: any) => {
+        alert('Erro ao enviar imagem para o servidor.');
+      }
+    )
+  }
+
   inputChange(event: Event) {
     const files = (event.target as HTMLInputElement).files;
     this.arquivoSelecionado = files?.item(0);
@@ -122,26 +144,4 @@ export class CadastrarAnuncioComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
     }
   }
-
-  // String.prototype.reverse = function(){
-  //   return this.split('').reverse().join('');
-  // }
-
-  // function mascaraMoeda(campo,evento){
-  //   var tecla = (!evento) ? window.event.keyCode : evento.which;
-  //   var valor  =  campo.value.replace(/[^\d]+/gi,'').reverse();
-  //   var resultado  = "";
-  //   var mascara = "##.###.###,##".reverse();
-  //   for (var x=0, y=0; x<mascara.length && y<valor.length;) {
-  //     if (mascara.charAt(x) != '#') {
-  //       resultado += mascara.charAt(x);
-  //       x++;
-  //     } else {
-  //       resultado += valor.charAt(y);
-  //       y++;
-  //       x++;
-  //     }
-  //   }
-  //   campo.value = resultado.reverse();
-  // }
 }

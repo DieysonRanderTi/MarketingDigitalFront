@@ -14,3 +14,15 @@
   border-left: inherit;
   border-radius: 0 0.37rem 0.37rem 0;
 }
+
+.cabecalhoAnuncio{
+  background-color: darkblue;
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+}
+
+img{
+  cursor: pointer;
+}

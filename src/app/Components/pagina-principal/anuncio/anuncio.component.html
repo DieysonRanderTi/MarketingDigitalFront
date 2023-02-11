@@ -11,7 +11,7 @@
             <!-- <a (click)="abrirModalAnuncio(anuncio)"> -->
             <div class="col-xl-12 col-lg-4 col-md-3 col-sm-2">
                 <div class="card cardAnuncio" *ngIf="anuncios != null">
-                    <img class="img-wrap" src="https://localhost:5001/arquivos/{{anuncio.imagem_url}}" />
+                    <img class="img-wrap" src="https://localhost:5001/resources/images/{{anuncio.imagem_url}}" />
                       <figcaption class="info-wrap">
                         <p class="descricao">{{anuncio.descricao}}</p>
                         <p class="informacoes text-center"> Promoção até {{ anuncio.data_validade | date:'dd/MM/yy'}}</p>
