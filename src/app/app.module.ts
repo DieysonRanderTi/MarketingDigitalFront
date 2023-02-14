@@ -24,7 +24,7 @@ import { GerencialEmpresaComponent } from './Components/Empresa/gerencial-empres
 import { CadastroEmpresaComponent } from './Components/Empresa/cadastro-empresa/cadastro-empresa.component';
 
 
-registerLocaleData(localePt, 'pt');
+registerLocaleData(localePt, 'pt');''
 
 @NgModule({
   declarations: [
