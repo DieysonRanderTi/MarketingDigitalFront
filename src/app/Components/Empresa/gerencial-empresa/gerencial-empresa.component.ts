@@ -1,3 +1,4 @@
+import { NgxSpinnerService } from 'ngx-spinner';
 import { EmpresaService } from './../../../Services/EmpresaService';
 import { Component, Input, OnInit } from '@angular/core';
 import { Empresa } from 'src/app/Models/Empresa';
@@ -14,7 +15,9 @@ export class GerencialEmpresaComponent implements OnInit {
   public anuncios: Anuncio[] = [];
   anunciosNaoPublicados: number = 0;
 
-  constructor(private empresaService: EmpresaService) { }
+  constructor(
+    private empresaService: EmpresaService,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.BuscarEmpresa();
@@ -23,6 +26,7 @@ export class GerencialEmpresaComponent implements OnInit {
 
   BuscarEmpresa() {
     debugger;
+    this.spinner.show();
     this.empresaService.BuscarEmpresaESeusAnuncios("3")
       .subscribe((result) => {
         debugger;
@@ -30,8 +34,14 @@ export class GerencialEmpresaComponent implements OnInit {
           this.empresa = result;
           this.anuncios = result.anuncios
           this.anunciosNaoPublicados = (result.quantidade_anuncios - result.anuncios.length)
+          setTimeout(() =>{
+            this.spinner.hide();
+          }, 500);
         }
         else{
+          setTimeout(() =>{
+            this.spinner.hide();
+          }, 500);
           alert(
             `$ Nenhuma empresa encontrada. Verifique a conexão com a internet.`
           );

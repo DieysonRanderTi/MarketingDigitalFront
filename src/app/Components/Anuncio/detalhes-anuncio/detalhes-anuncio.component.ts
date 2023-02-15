@@ -1,3 +1,4 @@
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Anuncio } from './../../../Models/Anuncio';
 import { AnuncioService } from 'src/app/Services/AnuncioService';
 import { ActivatedRoute } from '@angular/router';
@@ -8,12 +9,15 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './detalhes-anuncio.component.html',
   styleUrls: ['./detalhes-anuncio.component.css']
 })
+
 export class DetalhesAnuncioComponent implements OnInit {
 @Input() anuncio!: Anuncio;
 
   constructor(
     private route: ActivatedRoute,
-     private anuncioService: AnuncioService) { }
+     private anuncioService: AnuncioService,
+     private spinner: NgxSpinnerService
+     ) { }
 
   idAnuncio: string = "";
 
@@ -27,13 +31,20 @@ export class DetalhesAnuncioComponent implements OnInit {
 
   BuscarAnuncioPorId() {
     debugger;
+    this.spinner.show();
     this.anuncioService.BuscarAnuncioPorIdIncludeEmpresa(this.idAnuncio)
       .subscribe((result) => {
         debugger;
         if (result != null) {
           this.anuncio = result.result;
+          setTimeout(() =>{
+            this.spinner.hide();
+          }, 500);
         }
         else{
+          setTimeout(() =>{
+            this.spinner.hide();
+          }, 500);
           alert(
             `$ Nenhum anúncio encontrado. Verifique a conexão com a internet.`
           );

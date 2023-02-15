@@ -3,15 +3,19 @@ import { CategoriaService } from './../../../Services/CategoriaService';
 import { EmpresaService } from './../../../Services/EmpresaService';
 import { AnuncioService } from 'src/app/Services/AnuncioService';
 import { Empresa } from './../../../Models/Empresa';
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoriaAnuncio } from 'src/app/Models/CategoriaAnuncio';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cadastrar-anuncio',
   templateUrl: './cadastrar-anuncio.component.html',
   styleUrls: ['./cadastrar-anuncio.component.css'],
 })
+
+@Injectable()
+
 export class CadastrarAnuncioComponent implements OnInit {
   form: FormGroup;
   categorias: CategoriaAnuncio[] = [];
@@ -26,7 +30,8 @@ export class CadastrarAnuncioComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private anuncioservice: AnuncioService,
-    private categoriaService: CategoriaService
+    private categoriaService: CategoriaService,
+    private toast: ToastrService
   ) {
     this.form = this.fb.group({
       descricao: [
@@ -75,12 +80,13 @@ export class CadastrarAnuncioComponent implements OnInit {
       imagem_url: this.nomeArquivo,
     };
 
-    this.anuncioservice.SalvarAnuncio(anuncio).subscribe(
+    this.anuncioservice.SalvarAnuncio(anuncio)
+    .subscribe(
       () => {
-        alert('Anúncio cadastrado com sucesso!');
+        this.toast.success('Anúncio cadastrado com sucesso!', 'Sucesso');
       },
       (erro) => {
-        alert('Erro ao cadastrar o anúncio.');
+        this.toast.error('Erro ao cadastrar o anúncio.', 'Erro');
       }
     );
   }

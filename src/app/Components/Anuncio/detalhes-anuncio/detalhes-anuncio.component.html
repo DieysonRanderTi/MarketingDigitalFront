@@ -1,31 +1,36 @@
 <div class="container">
-  <div class="modal-header">
-    <h4>{{anuncio.descricao}}</h4>
-  </div>
-  <div class="modal-body">
-    <div class="row">
-      <div class="col-xl-4 col-lg-2 col-md-2 col-sm-2"></div>
-      <div class="col-xl-4 col-lg-2 col-md-2 col-sm-2">
-        <img width="300px" height="250px" src="https://localhost:5001/resources/images/{{anuncio.imagem_url}}" />
-        <p class="avisoImagem text-center">imagem meramente ilustrativa</p>
-        <p class=" preco">{{anuncio.preco | currency: 'BRL'}}</p>
-        <div class="row">
-          <span class="col-lg-12 col-md-12 col-sm-12"><i class="fa fa-calendar"></i> Promoção válida até:{{anuncio.data_validade | date:'dd/MM/yy'}}</span>
-        </div>
-          <span class="col-lg-6 col-md-6 col-sm-12">(ou em quanto durarem os estoques.)</span>
-          <div class="row">
-            <span class="col-lg-6 col-md-6 col-sm-12"><i class="fa fa-shopping-cart"></i> {{anuncio.empresa.nome_fantasia}}</span>
-            <span class="col-lg-6 col-md-6 col-sm-12"><i class="fa fa-map"></i> {{anuncio.empresa.rua}} nº{{anuncio.empresa.numero}}, {{anuncio.empresa.cidade}}-{{anuncio.empresa.uf}}</span>
-            <span class="col-lg-6 col-md-6 col-sm-12" *ngIf="anuncio.empresa.telefone != null"><i class="fa fa-phone"></i> {{anuncio.empresa.telefone}}</span>
-            <!-- <span class="col-lg-6 col-md-6 col-sm-12" *ngIf="anuncio.empresa.ponto_referencia != null">Referência: {{anuncio.empresa.ponto_referencia}}</span> -->
+  <div class="card" style="border-radius: 15px;">
+    <div class="card-header text-center" style="background-color: darkblue; color: white;">
+      <h4>{{anuncio.descricao}}</h4>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-xl-4 col-lg-2 col-md-2 col-sm-2"></div>
+        <div class="col-xl-4 col-lg-2 col-md-2 col-sm-2">
+          <img width="300px" height="250px" src="https://localhost:5001/resources/images/{{anuncio.imagem_url}}" style="align-items: center;" />
+          <p class="avisoImagem text-center">imagem ilustrativa</p>
+          <p class=" preco">{{anuncio.preco | currency: 'BRL'}}</p>
+          <div class="row text-center">
+            <span class="col-lg-12 col-md-12 col-sm-12" style="font-size: 20px"><i class="fa fa-calendar"></i> Promoção válida até: <strong>{{anuncio.data_validade | date:'dd/MM/yy'}}</strong></span>
+            <span class="col-lg-12 col-md-12 col-sm-12" style="font-size: 12px;">(ou em quanto durarem os estoques.)</span>
           </div>
+            <div class="row mt-3 ml-1">
+              <span class="col-lg-12 col-md-12 col-sm-12"><i class="fa fa-shopping-cart"></i> {{anuncio.empresa.nome_fantasia}}</span>
+              <span class="col-lg-12 col-md-12 col-sm-12"><i class="fa fa-map"></i> {{anuncio.empresa.rua}} nº{{anuncio.empresa.numero}}, {{anuncio.empresa.cidade}}-{{anuncio.empresa.uf}}</span>
+              <span class="col-lg-12 col-md-12 col-sm-12" *ngIf="anuncio.empresa.telefone != null"><i class="fa fa-phone"></i> {{anuncio.empresa.telefone}}</span>
+              <!-- <span class="col-lg-6 col-md-6 col-sm-12" *ngIf="anuncio.empresa.ponto_referencia != null">Referência: {{anuncio.empresa.ponto_referencia}}</span> -->
+            </div>
 
-        <p class="aviso"><strong>Atenção:</strong> Os anúncios promocionais publicados em nosso site são de confecção e responsabilidade exclusivas das empresas anunciantes.</p>
+            <div class="m-2" style="border: solid 1px grey; border-radius: 15px;">
+              <p class="aviso p-2"><strong>Atenção:</strong> Os anúncios promocionais publicados em nosso site são de confecção e responsabilidade exclusivas das empresas anunciantes.</p>
+            </div>
+        </div>
       </div>
     </div>
+    <div class="card-footer">
+      <button type="button" class="btn btn-outline-dark" routerLink="">Voltar</button>
+    </div>
   </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" routerLink="">Voltar</button>
-  </div>
+
 </div>
 

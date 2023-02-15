@@ -1,6 +1,6 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import {LOCALE_ID, DEFAULT_CURRENCY_CODE} from '@angular/core';
@@ -11,8 +11,12 @@ import { AnuncioService } from './Services/AnuncioService';
 import { EmpresaService } from './Services/EmpresaService';
 import { CategoriaService } from './Services/CategoriaService';
 
+import { ToastNoAnimationModule, ToastNoAnimation, ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PesquisaComponent } from './Components/pagina-principal/pesquisa/pesquisa.component';
 import { SliderMenuComponent } from './Components/pagina-principal/slider-menu/slider-menu.component';
 import { AnuncioComponent } from './Components/pagina-principal/anuncio/anuncio.component';
@@ -46,7 +50,16 @@ registerLocaleData(localePt, 'pt');''
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastNoAnimationModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+      progressBar: true
+    }),
+    NgxSpinnerModule
   ],
   providers: [
     {
@@ -59,6 +72,7 @@ registerLocaleData(localePt, 'pt');''
     HttpClient,
     FormBuilder
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

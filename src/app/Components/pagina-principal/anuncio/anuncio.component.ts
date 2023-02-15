@@ -1,3 +1,4 @@
+import { NgxSpinnerService } from 'ngx-spinner';
 import { DetalhesAnuncioComponent } from './../../Anuncio/detalhes-anuncio/detalhes-anuncio.component';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -14,20 +15,27 @@ export class AnuncioComponent implements OnInit {
 
   constructor(
     private anuncioservice: AnuncioService,
-     private route: Router) {}
+     private route: Router,
+     private spinner: NgxSpinnerService
+     ) {}
 
   ngOnInit(): void {
     this.buscarTodosAnuncios();
   }
 
   buscarTodosAnuncios() {
+    this.spinner.show();
     this.anuncioservice.BuscarTodosAnunciosIncludeEmpresa().subscribe(
       (result: any) => {
         debugger;
         if (result != null) this.anuncios = result;
+        setTimeout(() =>{
+          this.spinner.hide();
+        }, 500);
       },
       (erro) => {
         alert('Erro ao buscar os anúncios.');
+        this.spinner.hide();
       }
     );
   }
