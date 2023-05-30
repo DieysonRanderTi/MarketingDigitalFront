@@ -26,6 +26,7 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { DetalhesAnuncioComponent } from './Components/Anuncio/detalhes-anuncio/detalhes-anuncio.component';
 import { GerencialEmpresaComponent } from './Components/Empresa/gerencial-empresa/gerencial-empresa.component';
 import { CadastroEmpresaComponent } from './Components/Empresa/cadastro-empresa/cadastro-empresa.component';
+import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-mask';
 
 
 registerLocaleData(localePt, 'pt');''
@@ -53,6 +54,8 @@ registerLocaleData(localePt, 'pt');''
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastNoAnimationModule.forRoot(),
+    NgxMaskDirective,
+    NgxMaskPipe,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-bottom-right',
@@ -66,6 +69,7 @@ registerLocaleData(localePt, 'pt');''
       provide: LOCALE_ID,
       useValue: 'pt'
     },
+    provideEnvironmentNgxMask(),
     AnuncioService,
     EmpresaService,
     CategoriaService,

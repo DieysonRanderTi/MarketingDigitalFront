@@ -33,23 +33,10 @@ export class CadastrarAnuncioComponent implements OnInit {
     private categoriaService: CategoriaService,
     private toast: ToastrService
   ) {
-    this.form = this.fb.group({
-      descricao: [
-        null,
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(150),
-        ],
-      ],
-      data_validade: [null, [Validators.required]],
-      preco: [null, [Validators.required]],
-      categoria: [null, [Validators.required]],
-      imagem: [null, [Validators.required]],
-    });
   }
 
   ngOnInit(): void {
+    this.validation();
     this.BuscarCategorias();
   }
 
@@ -60,6 +47,16 @@ export class CadastrarAnuncioComponent implements OnInit {
   onChange(event: any) {
     const selectedFiles = <FileList>event.srcElement.files;
     document.getElementById('imageLabel')!.innerHTML = selectedFiles[0].name;
+  }
+
+  public validation(): void{
+    this.form = this.fb.group({
+      descricao: ['',[Validators.required, Validators.minLength(4), Validators.maxLength(150)]],
+      data_validade: ['', Validators.required],
+      preco: ['', Validators.required],
+      categoria: ['', Validators.required],
+      imagem: ['', Validators.required],
+    });
   }
 
   salvarAnuncio() {
