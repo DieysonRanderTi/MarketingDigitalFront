@@ -37,6 +37,7 @@ export class DetalhesAnuncioComponent implements OnInit {
         debugger;
         if (result != null) {
           this.anuncio = result.result;
+          this.anuncioService.GeraClickAnuncio(this.idAnuncio).subscribe();
           setTimeout(() =>{
             this.spinner.hide();
           }, 500);

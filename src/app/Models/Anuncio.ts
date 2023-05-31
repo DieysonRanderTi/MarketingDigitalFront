@@ -13,6 +13,7 @@ export class Anuncio{
     empresa_Id: number;
     empresa: Empresa;
     imagem_url: string;
+    cliques: number
 
     constructor(id: number,
       descricao: string,
@@ -24,7 +25,8 @@ export class Anuncio{
       empresa_Id: number,
       empresa: Empresa,
       categoria: CategoriaAnuncio,
-      imagem_url: string){
+      imagem_url: string,
+      cliques: number){
         this.id = id;
         this.descricao = descricao;
         this.data_validade = data_validade;
@@ -36,5 +38,6 @@ export class Anuncio{
         this.empresa_Id = empresa_Id;
         this.empresa = empresa;
         this.imagem_url = imagem_url;
+        this.cliques = cliques;
     }
 }

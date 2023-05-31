@@ -36,7 +36,7 @@
                 <td>{{anuncio.preco | currency: 'BRL'}}</td>
                 <td>{{anuncio.data_validade | date:'dd/MM/yy'}}</td>
                 <td>Produto com validade próxima</td>
-                <td title="147 pessoas clicaram no seu produto">147</td>
+                <td>{{anuncio.cliques}}</td>
                 <button class="btn btn-outline-success botoes" title="Ver detalhes" [routerLink]="['/detalhes-anuncio', anuncio.id]"><i class="fa fa-eye"></i></button>
                 <button class="btn btn-outline-primary botoes" title="Editar" [routerLink]="['/cadastrar-anuncio', anuncio.id]"><i class="fa fa-edit"></i></button>
                 <button class="btn btn-outline-danger botoes" title="Apagar"><i class="fa fa-eraser"></i></button>

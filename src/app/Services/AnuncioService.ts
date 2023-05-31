@@ -29,11 +29,14 @@ export class AnuncioService{
     return this.http.get<any[]>(`${environment.apiUrl}/anuncio/buscaranuncioporidincludeempresacategoria/`+id)
   }
 
+  GeraClickAnuncio(id: string){
+    return this.http.get(`${environment.apiUrl}/anuncio/geraclickanuncio/`+id)
+  }
+
   BuscarTodosAnuncios(): Observable<any>{
     return this.http.get<any[]>(`${environment.apiUrl}/anuncio`)
   }
   SalvarAnuncio(obj: any){
-    debugger;
     return this.http.post(`${environment.apiUrl}/anuncio`, obj)
   }
   AtualizarAnuncio(obj: any): Observable<any>{
