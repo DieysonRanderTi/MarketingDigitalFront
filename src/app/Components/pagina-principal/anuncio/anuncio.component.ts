@@ -61,7 +61,7 @@ export class AnuncioComponent implements OnInit {
         }, 500);
       },
       (erro) => {
-        alert('Erro ao buscar os anúncios.');
+        this.toast.error('Erro ao buscar os anúncios. Verifique a conexão com a internet.');
         this.spinner.hide();
       }
     );
@@ -92,7 +92,7 @@ debugger;
             }
           },
           (erro) => {
-            alert('Erro ao buscar os anúncios.');
+            this.toast.error('Erro ao buscar os anúncios. Verifique a conexão com a internet.');
             this.spinner.hide();
           }
         );
