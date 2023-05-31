@@ -69,8 +69,11 @@ export class AnuncioComponent implements OnInit {
 
   buscarAnunciosPorDescricao() {
 debugger;
-    if(this.descricao == ""){
+    if(this.descricao.trim() == ""){
       this.buscarTodosAnuncios();
+    }
+    else if(this.descricao.length < 3){
+      this.toast.error('Digite no minimo 3 caracteres para fazer a busca.');
     }
     else{
       this.spinner.show();
