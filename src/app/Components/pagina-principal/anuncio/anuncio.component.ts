@@ -4,32 +4,59 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Anuncio } from '../../../Models/Anuncio';
 import { AnuncioService } from 'src/app/Services/AnuncioService';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs/internal/Observable';
+import {
+  tap,
+  map,
+  filter,
+  distinctUntilChanged,
+  debounceTime,
+  switchMap,
+} from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-anuncio',
   templateUrl: './anuncio.component.html',
-  styleUrls: ['./anuncio.component.css']
+  styleUrls: ['./anuncio.component.css'],
 })
 export class AnuncioComponent implements OnInit {
+  descricao: string = '';
   public anuncios: Anuncio[] = [];
+  queryField = new FormControl();
+  results: Observable<any>;
 
   constructor(
     private anuncioservice: AnuncioService,
-     private route: Router,
-     private spinner: NgxSpinnerService
-     ) {}
+    private route: Router,
+    private spinner: NgxSpinnerService,
+    private toast: ToastrService,
+  ) {}
 
   ngOnInit(): void {
     this.buscarTodosAnuncios();
+    // debugger;
+    // this.results = this.queryField.valueChanges
+    //   .pipe(
+    //     map((value) => value.trim()),
+    //     filter((value) => value.length >= 3),
+    //     debounceTime(200),
+    //     distinctUntilChanged(),
+    //     switchMap( async value => this.buscarAnunciosPorDescricao(value),
+    //     )
+    //   ),
+    //   tap((res: any) => this.anuncios = res.anuncios )
+    //   map((res: any => res.results));
   }
 
   buscarTodosAnuncios() {
     this.spinner.show();
-    this.anuncioservice.BuscarTodosAnunciosIncludeEmpresa().subscribe(
+    this.anuncioservice.BuscarTodosAnunciosOuPorDescricao().subscribe(
       (result: any) => {
         debugger;
         if (result != null) this.anuncios = result;
-        setTimeout(() =>{
+        setTimeout(() => {
           this.spinner.hide();
         }, 500);
       },
@@ -40,7 +67,36 @@ export class AnuncioComponent implements OnInit {
     );
   }
 
-  abrirModalAnuncio(anuncio: Anuncio){
+  buscarAnunciosPorDescricao() {
+debugger;
+    if(this.descricao == ""){
+      this.buscarTodosAnuncios();
+    }
+    else{
+      this.spinner.show();
+      this.anuncioservice
+        .BuscarTodosAnunciosOuPorDescricao(this.descricao)
+        .subscribe(
+          (result: any) => {
+            debugger;
+            if (result != null) this.anuncios = result;
+            setTimeout(() => {
+              this.spinner.hide();
+            }, 500);
+            if(result == null){
+              this.spinner.hide();
+              this.toast.error('Nehum resultado para a busca: '+this.descricao.toLocaleUpperCase());
+            }
+          },
+          (erro) => {
+            alert('Erro ao buscar os anúncios.');
+            this.spinner.hide();
+          }
+        );
+    }
+  }
+
+  abrirModalAnuncio(anuncio: Anuncio) {
     // const modalRef = this.modalService.open(DetalhesAnuncioComponent);
     // modalRef.componentInstance.anuncio = anuncio;
   }

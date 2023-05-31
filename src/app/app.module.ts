@@ -17,7 +17,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PesquisaComponent } from './Components/pagina-principal/pesquisa/pesquisa.component';
 import { SliderMenuComponent } from './Components/pagina-principal/slider-menu/slider-menu.component';
 import { AnuncioComponent } from './Components/pagina-principal/anuncio/anuncio.component';
 import { CadastrarAnuncioComponent } from './Components/Anuncio/cadastrar-anuncio/cadastrar-anuncio.component';
@@ -35,7 +34,6 @@ registerLocaleData(localePt, 'pt');''
   declarations: [
     AppComponent,
     AnuncioComponent,
-    PesquisaComponent,
     SliderMenuComponent,
     CadastrarAnuncioComponent,
     PaginaPrincipalComponent,

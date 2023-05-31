@@ -14,6 +14,9 @@ const routes: Routes = [
     path: 'cadastrar-anuncio', component: CadastrarAnuncioComponent
   },
   {
+    path: 'cadastrar-anuncio/:id', component: CadastrarAnuncioComponent
+  },
+  {
     path: 'detalhes-anuncio/:id', component: DetalhesAnuncioComponent
   },
   {

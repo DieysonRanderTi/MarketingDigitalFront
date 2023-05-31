@@ -3,10 +3,12 @@ import { CategoriaService } from './../../../Services/CategoriaService';
 import { EmpresaService } from './../../../Services/EmpresaService';
 import { AnuncioService } from 'src/app/Services/AnuncioService';
 import { Empresa } from './../../../Models/Empresa';
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoriaAnuncio } from 'src/app/Models/CategoriaAnuncio';
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-cadastrar-anuncio',
@@ -17,6 +19,7 @@ import { ToastrService } from 'ngx-toastr';
 @Injectable()
 
 export class CadastrarAnuncioComponent implements OnInit {
+  @Input() anuncio!: Anuncio;
   form: FormGroup;
   categorias: CategoriaAnuncio[] = [];
   empresaId: number = 0;
@@ -26,18 +29,28 @@ export class CadastrarAnuncioComponent implements OnInit {
   nomeArquivo: string = '';
   imagemUrl = "../../../../assets/images/icons/upload.png";
   public arquivoSelecionado: File | null | undefined;
+  idAnuncio: string = "";
 
   constructor(
     private fb: FormBuilder,
     private anuncioservice: AnuncioService,
     private categoriaService: CategoriaService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private route: ActivatedRoute,
+     private anuncioService: AnuncioService,
+     private spinner: NgxSpinnerService
   ) {
   }
 
   ngOnInit(): void {
     this.validation();
     this.BuscarCategorias();
+
+    this.idAnuncio = this.route.snapshot.params['id'];
+    debugger;
+    if(this.idAnuncio != null){
+      this.BuscarAnuncioPorId();
+    }
   }
 
   get f() {
@@ -145,5 +158,29 @@ export class CadastrarAnuncioComponent implements OnInit {
       };
       reader.readAsDataURL(event.target.files[0]);
     }
+  }
+
+  BuscarAnuncioPorId() {
+    debugger;
+    this.spinner.show();
+    this.anuncioService.BuscarAnuncioPorIdIncludeEmpresa(this.idAnuncio)
+      .subscribe((result) => {
+        debugger;
+        if (result != null) {
+          this.anuncio = result.result;
+          setTimeout(() =>{
+            this.spinner.hide();
+          }, 500);
+        }
+        else{
+          setTimeout(() =>{
+            this.spinner.hide();
+          }, 500);
+          alert(
+            `$ Nenhum anúncio encontrado. Verifique a conexão com a internet.`
+          );
+        }
+      }
+    );
   }
 }

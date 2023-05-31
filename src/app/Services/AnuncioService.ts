@@ -14,11 +14,11 @@ export class AnuncioService{
     private http: HttpClient
   ){}
 
-  BuscarTodosAnunciosIncludeEmpresa(): Observable<any>{
-    return this.http.get<any[]>(`${environment.apiUrl}/anuncio/buscaranuncioincludeempresa`)
+  BuscarTodosAnunciosOuPorDescricao(descricao?: string): Observable<any>{
+    return this.http.get<any[]>(`${environment.apiUrl}/anuncio/buscatodosanuncios/`+descricao)
   }
   BuscarAnunciosPorDescricao(descricao: string): Observable<any>{
-    return this.http.get<any[]>(`${environment.apiUrl}/anuncio/buscaranunciospordescricao`+descricao)
+    return this.http.get<any[]>(`${environment.apiUrl}/anuncio/buscaranunciospordescricao/`+descricao)
   }
 
   BuscarAnuncioPorId(id: string): Observable<any>{
@@ -26,7 +26,7 @@ export class AnuncioService{
   }
 
   BuscarAnuncioPorIdIncludeEmpresa(id: string): Observable<any>{
-    return this.http.get<any[]>(`${environment.apiUrl}/anuncio/buscaranuncioporidincludeempresa/`+id)
+    return this.http.get<any[]>(`${environment.apiUrl}/anuncio/buscaranuncioporidincludeempresacategoria/`+id)
   }
 
   BuscarTodosAnuncios(): Observable<any>{

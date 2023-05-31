@@ -11,6 +11,7 @@
               type="text"
               class="form-control"
               formControlName="descricao"
+              [(ngModel)]="anuncio.descricao"
               placeholder="Digite a descrição do seu anúncio"
               [ngClass]="{'is-invalid': f.descricao.errors && f.descricao.touched}"
             />
@@ -20,15 +21,22 @@
           </div>
           <div class="form-group col-md-4">
             <label>Válido até</label>
-            <input type="date" class="form-control" formControlName="data_validade"
-              [ngClass]="{'is-invalid': f.data_validade.errors && f.data_validade.touched}"
+            <input
+            type="date"
+            class="form-control"
+            formControlName="data_validade"
+            [(ngModel)]="anuncio.data_validade"
+            [ngClass]="{'is-invalid': f.data_validade.errors && f.data_validade.touched}"
             />
             <div *ngIf="f.data_validade.errors?.required" class="invalid-feedback"> Escolha uma data de validade para o anúncio</div>
           </div>
           <div class="form-group col-md-4">
             <label for="inputState">Categoria</label>
-            <select id="categoriaId" class="form-control" formControlName="categoria"
-              [ngClass]="{'is-invalid': f.categoria.errors && f.categoria.touched}"
+            <select id="categoriaId"
+            class="form-control"
+            formControlName="categoria"
+            [(ngModel)]="anuncio.categoria.descricao"
+            [ngClass]="{'is-invalid': f.categoria.errors && f.categoria.touched}"
             >
               <option selected>Selecione...</option>
               <option *ngFor="let categoria of categorias" value="{{ categoria.id }}">
@@ -43,6 +51,7 @@
               type="text"
               class="form-control"
               formControlName="preco"
+              [(ngModel)]="anuncio.preco"
               id="preco"
               placeholder="Ex: R$23,99"
               mask="separator.2"
@@ -58,7 +67,9 @@
               <input type="file" #file (change)="onFileChange($event)" style="display: none" formControlName="imagem"
                 [ngClass]="{'is-invalid': f.imagem.errors && f.imagem.touched}"
               >
-              <img class="image col-md-4" [src]="imagemUrl" (click)="file.click()" style="width: 20%" tooltip="Upload de nova Imagem">
+              <div *ngIf="anuncio.imagem_url == null">
+                <img class="image col-md-4" [src]="imagemUrl" (click)="file.click()" style="width: 20%" tooltip="Upload de nova Imagem">
+              </div>
               <div *ngIf="f.imagem.errors.required" class="invalid-feedback"> Escolha uma imagem para o anúncio</div>
             </div>
       </div>

@@ -1,3 +1,4 @@
+import { CategoriaAnuncio } from 'src/app/Models/CategoriaAnuncio';
 import { Empresa } from '../Models/Empresa';
 
 export class Anuncio{
@@ -8,6 +9,7 @@ export class Anuncio{
     ativo: boolean;
     is_destaque: boolean;
     categoria_Id: number;
+    categoria: CategoriaAnuncio
     empresa_Id: number;
     empresa: Empresa;
     imagem_url: string;
@@ -21,6 +23,7 @@ export class Anuncio{
       categoria_Id: number,
       empresa_Id: number,
       empresa: Empresa,
+      categoria: CategoriaAnuncio,
       imagem_url: string){
         this.id = id;
         this.descricao = descricao;
@@ -29,6 +32,7 @@ export class Anuncio{
         this.ativo = ativo;
         this.is_destaque = is_destaque;
         this.categoria_Id = categoria_Id;
+        this.categoria = categoria;
         this.empresa_Id = empresa_Id;
         this.empresa = empresa;
         this.imagem_url = imagem_url;
