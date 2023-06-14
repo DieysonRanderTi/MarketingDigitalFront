@@ -54,18 +54,14 @@
             id="categoriaId"
             class="form-control"
             formControlName="categoria"
-            [(ngModel)]="anuncio.categoria.descricao"
             [ngClass]="{
               'is-invalid': f.categoria.errors && f.categoria.touched
             }"
           >
-            <option selected>Selecione...</option>
-            <option
-              *ngFor="let categoria of categorias"
-              value="{{ categoria.id }}"
-            >
-              {{ categoria.descricao }}
-            </option>
+            <option *ngIf="IsEdicao" [selected]>{{ anuncio.categoria.descricao }}</option>
+            <option *ngIf="!IsEdicao" [selected]>Selecione</option>
+
+            <option *ngFor="let categoria of categorias" value="categoria.id">{{ categoria.descricao }}</option>
           </select>
           <div *ngIf="f.categoria.errors?.required" class="invalid-feedback">
             Escolha uma categoria para o anúncio

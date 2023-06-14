@@ -19,7 +19,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 @Injectable()
 
 export class CadastrarAnuncioComponent implements OnInit {
-  @Input() anuncio!: Anuncio;
+  @Input() anuncio: Anuncio = null;
   form: FormGroup;
   categorias: CategoriaAnuncio[] = [];
   empresaId: number = 0;
@@ -30,6 +30,7 @@ export class CadastrarAnuncioComponent implements OnInit {
   imagemUrl = "../../../../assets/images/icons/upload.png";
   public arquivoSelecionado: File | null | undefined;
   idAnuncio: string = "";
+  IsEdicao: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -50,6 +51,7 @@ export class CadastrarAnuncioComponent implements OnInit {
     debugger;
     if(this.idAnuncio != null){
       this.BuscarAnuncioPorId();
+      this.IsEdicao = true;
     }
   }
 
@@ -77,7 +79,7 @@ export class CadastrarAnuncioComponent implements OnInit {
     this.categoriaId = parseInt(
       (<HTMLSelectElement>document.getElementById('categoriaId')).value
     );
-    this.empresaId = 3;
+    this.empresaId = 2;
 
     let anuncio = {
       descricao: this.f.descricao.value,

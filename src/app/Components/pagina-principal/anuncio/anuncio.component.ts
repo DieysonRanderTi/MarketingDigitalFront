@@ -1,3 +1,4 @@
+import { environment } from './../../../../environments/environment';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { DetalhesAnuncioComponent } from './../../Anuncio/detalhes-anuncio/detalhes-anuncio.component';
 import { Component, OnInit } from '@angular/core';
@@ -26,6 +27,7 @@ export class AnuncioComponent implements OnInit {
   public anuncios: Anuncio[] = [];
   queryField = new FormControl();
   results: Observable<any>;
+  imageUrl: any = environment.imagesService;
 
   constructor(
     private anuncioservice: AnuncioService,
