@@ -31,6 +31,7 @@ export class CadastrarAnuncioComponent implements OnInit {
   public arquivoSelecionado: File | null | undefined;
   idAnuncio: string = "";
   IsEdicao: boolean = false;
+  private dateInput: HTMLElement;
 
   constructor(
     private fb: FormBuilder,
@@ -170,6 +171,8 @@ export class CadastrarAnuncioComponent implements OnInit {
         debugger;
         if (result != null) {
           this.anuncio = result.result;
+          const [date, time] = result.result.data_validade.split('T');
+          this.anuncio.data_validade = date
           setTimeout(() =>{
             this.spinner.hide();
           }, 500);

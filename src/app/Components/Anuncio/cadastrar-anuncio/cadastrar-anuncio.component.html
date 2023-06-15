@@ -36,16 +36,16 @@
             type="date"
             class="form-control"
             formControlName="data_validade"
-            [(ngModel)]="anuncio.data_validade"
             [ngClass]="{
               'is-invalid': f.data_validade.errors && f.data_validade.touched
             }"
+            [(ngModel)]="anuncio.data_validade"
           />
           <div
             *ngIf="f.data_validade.errors?.required"
             class="invalid-feedback"
           >
-            Escolha uma data de validade para o anúncio
+            Defina uma data de validade.
           </div>
         </div>
         <div class="form-group col-md-4">
@@ -59,12 +59,11 @@
             }"
           >
             <option *ngIf="IsEdicao" [selected]>{{ anuncio.categoria.descricao }}</option>
-            <option *ngIf="!IsEdicao" [selected]>Selecione</option>
-
+            <option *ngIf="!IsEdicao" selected> Selecione </option>
             <option *ngFor="let categoria of categorias" value="categoria.id">{{ categoria.descricao }}</option>
           </select>
           <div *ngIf="f.categoria.errors?.required" class="invalid-feedback">
-            Escolha uma categoria para o anúncio
+            Escolha uma categoria.
           </div>
         </div>
         <div class="form-group col-md-4">
@@ -83,7 +82,7 @@
             [ngClass]="{ 'is-invalid': f.preco.errors && f.preco.touched }"
           />
           <div *ngIf="f.preco.errors?.required" class="invalid-feedback">
-            Defina um preço para o anúncio
+            Defina um preço.
           </div>
         </div>
         <div class="form-group row">
@@ -96,7 +95,6 @@
             formControlName="imagem"
             [ngClass]="{ 'is-invalid': f.imagem.errors && f.imagem.touched }"
           />
-          <div *ngIf="anuncio.imagem_url == null">
             <img
               class="image col-md-4"
               [src]="imagemUrl"
@@ -104,9 +102,8 @@
               style="width: 20%"
               tooltip="Upload de nova Imagem"
             />
-          </div>
           <div *ngIf="f.imagem.errors.required" class="invalid-feedback">
-            Escolha uma imagem para o anúncio
+            Escolha uma imagem.
           </div>
         </div>
       </div>
